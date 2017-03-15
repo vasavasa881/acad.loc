@@ -82,7 +82,7 @@ class Category
                         ."WHERE id_cat='$id' "
                         . " ORDER BY id ASC"
                         ." LIMIT '4'"
-                        ." OFFSET '4'");
+                       );
 
             $i = 0;
             while ($row = $result->fetch()) {
