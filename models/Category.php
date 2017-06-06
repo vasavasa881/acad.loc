@@ -70,19 +70,15 @@ class Category
                 $user = 'root';
                 $password = '';
                 $db = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);*/
-        $count=self::SHOW_BY_DEFAULT;
+
+
         if ($id) {
             $page = intval($page);
             $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
 
             $db = Db::getConnection();
             $newsList = array();
-            $result = $db->query(
-                        "SELECT id, title FROM news"
-                        ."WHERE id_cat='$id' "
-                        . " ORDER BY id ASC"
-                        ." LIMIT '4'"
-                       );
+            $result = $db->query('SELECT id, title FROM news WHERE id_cat=' . $id . ' ORDER BY id ASC LIMIT ' . self::SHOW_BY_DEFAULT . ' OFFSET ' . $offset);
 
             $i = 0;
             while ($row = $result->fetch()) {
@@ -94,6 +90,18 @@ class Category
             return $newsList;
 
         }
+    }
+
+    public static function getTotalNewsInCategory($id)
+    {
+        $db = Db::getConnection();
+
+        $result = $db->query('SELECT count(id) AS count FROM news '
+            . 'WHERE  id_cat =' . $id );
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+        $row = $result->fetch();
+
+        return $row['count'];
     }
 }
 

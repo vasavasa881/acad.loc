@@ -1,28 +1,41 @@
 <?php
 
-include_once ROOT. '/models/Category.php';
 
 
 
 class CategoryController {
 
 
-    public function actionCategoryview($id=1, $page=1)
+    public function actionCategory($id, $page = 1)
 
     {
+
         echo "category ".$id."<br>";
-        echo "page ".$page;
+        echo "page ".$page."<br>";
+
             $categoryList=array();
             $categoryList=Category::getCategoryList();
-        if ($id) {
+
             $categoryItem = Category::getCategoryItemByID($id);
+
             $newsList = array();
             $newsList = Category::getNewsList($id, $page);
 
-            require_once(ROOT . '/views/categoryview.php');
 
-            /*			echo 'actionView'; */
-        }
+
+
+        $total = Category::getTotalNewsInCategory($id);
+
+
+
+        $pagination = new Pagination($total, $page, Category::SHOW_BY_DEFAULT, 'page-');
+
+
+
+
+
+        require_once(ROOT . '/views/categoryview.php');
+
 
         return true;
 

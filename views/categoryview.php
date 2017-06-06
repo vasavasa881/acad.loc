@@ -10,17 +10,24 @@
                     <div>
                         <?php foreach ($newsList as $newsItem):?>
                             <div class="permalink">
-                                <p class="title"><a href='../news/<?php echo $newsItem['id'] ;?>'><?php echo $newsItem['title'].' # '.$newsItem['id'];?></a></p>
+                                <p class="title"><a href='/news/<?php echo $newsItem['id'] ;?>'><?php echo $newsItem['title'].' # '.$newsItem['id'];?></a></p>
                             </div>
                         <?php endforeach;?>
+
                     </div>
                     <p><a href='../' class="permalink"> Back to HomePage</a></p>
                     <div style="clear: both;">&nbsp;</div>
+                    <!-- Постраничная навигация -->
+                    <?php echo $pagination->get(); ?>
+
+
                 </div>
                 <!-- end #content -->
                 <?php include_once ROOT.'/views/layot/sidebar.php'; ?>
                 <!-- end #sidebar -->
+
                 <div style="clear: both;">&nbsp;</div>
+
             </div>
         </div>
     </div>

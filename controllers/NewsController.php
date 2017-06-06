@@ -1,6 +1,5 @@
 <?php
-include_once ROOT.'/models/News.php';
-include_once ROOT. '/models/Category.php';
+
 class NewsController {
 
 

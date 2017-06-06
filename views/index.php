@@ -17,12 +17,11 @@
 						</div>
 					</div>
 				<?php endforeach;?>
-					<div style="clear: both;">&nbsp;</div>
+
+
 				</div>
 				<!-- end #content -->
-				<?php include_once ROOT.'/views/layot/sidebar.php'; ?>
-				<!-- end #sidebar -->
-				<div style="clear: both;">&nbsp;</div>
+                <div id="sidebar"><?php include_once ROOT.'/views/layot/sidebar.php'; ?></div>
 			</div>
 		</div>
 	</div>
